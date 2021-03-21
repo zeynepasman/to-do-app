@@ -148,22 +148,6 @@ const TodoListWrapper = styled.div`
       text-align:  left;
       position: relative;
 
-      .ColorChooser {
-        width: 5px;
-        height: 100%;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        flex-shrink: 0;
-        margin-right: 10px;
-        margin-left: inherit;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: inherit;
-        ${borderRadius(0)};
-        ${transition(0.25)};
-      }
 
       .ant-checkbox-wrapper {
         line-height: 1;
@@ -254,7 +238,7 @@ const TodoListWrapper = styled.div`
 
       .NoteEditIcon {
         font-size: 16px;
-        color: ${palette('secondary', 0)};
+        color: ${palette('primary', 0)};
         width: 30px;
         height: 30px;
         display: flex;
@@ -301,40 +285,6 @@ const TodoListWrapper = styled.div`
       margin: 50px 0;
     }
   }
-
-  .TodoFooter {
-    margin-top: 5px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    .TodoCheckAll {
-      display: inline-flex;
-      align-items: center;
-
-      .ant-checkbox {
-        .ant-checkbox-inner {
-          width: 15px;
-          height: 15px;
-        }
-
-        &.ant-checkbox-disabled {
-          .ant-checkbox-inner {
-            border-color: ${palette('grayscale', 2)};
-
-            &:after {
-              border-color: ${palette('grayscale', 2)};
-            }
-          }
-        }
-      }
-
-      span {
-        font-size: 13px;
-        line-height: 1;
-        color: ${palette('text', 3)};
-      }
-    }
 `;
 
 export { TodoWrapper, TodoListWrapper };

@@ -5,12 +5,12 @@ import { TodoWrapper } from '../../components/styles';
 import TodoList from './List';
 import toDoActions from "../../redux/toDos/actions";
 import { notification } from '../../components/Notification';
+import Loader from '../../components/Loader/Loader';
 
 const {
   initData,
   addTodo,
   editToDo,
-  allCompleted
 } = toDoActions;
 
 const { Header, Content } = Layout;
@@ -18,6 +18,7 @@ const { Header, Content } = Layout;
 export default function ToDo() {
 
   const { todos, error, loading } = useSelector((state: RootStateOrAny) => state.Todos);
+  const [newTodo, setNewTodo] = React.useState('');
 
   const dispatch = useDispatch();
 
@@ -40,7 +41,10 @@ export default function ToDo() {
           <Input
             placeholder={'Type here for add a new todo and enter'}
             className="TodoInput"
+            value={newTodo}
+            onChange={event => setNewTodo(event.target.value)}
             onPressEnter={(event: any) => {
+              setNewTodo('');
               dispatch(addTodo({
                 'title': event.target.value,
                 "completed": false,
@@ -50,14 +54,14 @@ export default function ToDo() {
           />
         </Header>
         <Content className="TodoContentBody">
-          <TodoList
-            todos={todos}
-            editTodo={todo => editTodo(todo)}
-            allCompleted={() => dispatch(allCompleted)}
-            /> 
+          {loading !== true ?
+             <TodoList
+             todos={todos}
+             editTodo={todo => editTodo(todo)}
+            /> : <Loader />
+          }
         </Content>
       </TodoWrapper>
-
     </Layout>
   );
 }

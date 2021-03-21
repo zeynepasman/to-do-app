@@ -36,13 +36,11 @@ const SingleTask: FC<ItemProps> = ({
                 onChange={(e: CheckboxChangeEvent) => updateComplete(e)}
             />
             <div className="TodoContentWrapper">
-            
                 <EditableContent
                     title={todo.title}
                     onChange={updateTodo}
                 />
             </div>
-        
         </div>
     );
 }
